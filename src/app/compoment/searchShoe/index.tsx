@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { getListProductByKeyWord } from "@/app/service/shoeApi";
 import { IShoeType } from "@/app/types/shoe";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import _ from "lodash"
 const SearchShoe = ({
     initDataListShoe,
@@ -11,7 +11,7 @@ const SearchShoe = ({
     initDataListShoe: IShoeType[];
 }) => {
     const [listShoe, setListShoe] = useState<IShoeType[]>(initDataListShoe);
-    const searchParams = useSearchParams();
+    // const searchParams = useSearchParams();
     const router = useRouter();
     const handleRenderListShoe = _.debounce(async (keyWord: string) => {
         try {
@@ -24,8 +24,9 @@ const SearchShoe = ({
     }, 500);
 
 
-    const handleOnchangeSearch = async (e) => {
-        let value = e.target.value;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const handleOnchangeSearch = async (e: any) => {
+        const value = e.target.value;
 
         handleRenderListShoe(value);
     };

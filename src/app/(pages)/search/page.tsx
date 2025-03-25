@@ -1,13 +1,15 @@
 
 import SearchShoe from "@/app/compoment/searchShoe";
 import { getListProductByKeyWord } from "@/app/service/shoeApi";
-import { IShoeType } from "@/app/types/shoe";
-import { useSearchParams } from "next/navigation";
-import React, { useState } from "react";
-import _ from "lodash"
-const SearchPage = async ({ searchParams }) => {
-    const { tenGiay } = searchParams;
-    const listInitShoe = await getListProductByKeyWord();
+
+import React, { } from "react";
+
+const SearchPage = async ({ searchParams,
+}: {
+    searchParams: Promise<{ tenGiay: string }>;
+}) => {
+    const { tenGiay } = await searchParams;
+    const listInitShoe = await getListProductByKeyWord(tenGiay);
     return (
         <SearchShoe initDataListShoe={listInitShoe} />
     )

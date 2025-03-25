@@ -4,7 +4,11 @@ import { getShoeDetaiLById } from '@/app/service/shoeApi';
 import { IShoeType } from "@/app/types/shoe";
 
 
-const DetailShoePage = async ({ params }: any) => {
+const DetailShoePage = async ({ params }: {
+    params: Promise<{
+        stt: number;
+    }>
+}) => {
 
     const { stt } = await params
     const shoeDetail: IShoeType = await getShoeDetaiLById(stt);

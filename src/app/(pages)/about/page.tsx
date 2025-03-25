@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
 
 import React, { useEffect, useState } from "react";
@@ -16,11 +17,11 @@ const About = () => {
         })()
     }, [])
     return (<div className="grid grid-cols-4 gap-4">
-        {listShoe?.map((shoe, index) => (
+        {listShoe?.map((shoe) => (
             <div key={shoe.id}>
                 <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
                     <a href="#">
-                        <img className="rounded-t-lg" src={shoe.image} alt />
+                        <img className="rounded-t-lg" src={shoe.image} alt="" />
                     </a>
                     <div className="p-5">
                         <a href="#">
